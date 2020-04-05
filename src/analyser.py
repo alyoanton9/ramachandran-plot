@@ -1,5 +1,5 @@
 import numpy as np
-from math import sqrt, pi
+from math import pi
 from cmath import phase
 
 
@@ -8,7 +8,7 @@ def sub(pair):
 
 
 def vectors(p1, p2, p3, p4):
-    """ makes 3 vectors from 4 points (C, N or Ca atoms) """
+    """ Makes 3 vectors from 4 points (C, N, CA or CB atoms). """
     a = np.array(list(map(sub, zip(p2, p1))), float)
     b = np.array(list(map(sub, zip(p3, p2))), float)
     c = np.array(list(map(sub, zip(p4, p3))), float)
@@ -16,12 +16,12 @@ def vectors(p1, p2, p3, p4):
 
 
 def length(x):
-    """ returns vector's length """
+    """ Returns vector's length. """
     return np.linalg.norm(x)
 
 
 def torsion(a, b, c):
-    """ returns torsion angle for a, b, c vectors (in degrees) """
+    """ Returns torsion angle for a, b, c vectors (in degrees). """
     b2ac = np.dot(np.multiply(-(length(b) ** 2), a), c)
     abbc = np.dot(a, b) * np.dot(b, c)
     babc = np.dot(np.multiply(length(b), a), np.cross(b, c))
@@ -29,9 +29,9 @@ def torsion(a, b, c):
 
 
 def torsionAngles(coords, coeff):
-    """ torsion angles of protein: phi(coeff == 2), psi(coeff == 0)
+    """ Calculates torsion angles of protein: phi(coeff == 2), psi(coeff == 0)
         phi: Ci-1 -- Ni -- Cai -- Ci
-        psi: Ni -- Cai -- Ci -- Ni+1 """
+        psi: Ni -- Cai -- Ci -- Ni+1. """
     angles = []
     coord1 = coords[0 + coeff]
     acidsNum = len(coords) // 3
@@ -44,3 +44,11 @@ def torsionAngles(coords, coeff):
         angles.append(angle)
         coord1 = coord4
     return angles
+
+
+def filteredAngles(angles, names, name):
+    """ Filters torsion angles by amino acid. """
+    angleNames = zip(names, angles)
+    newAngleNames = filter(lambda p: p[0] == name, angleNames)
+    newAngles = map(lambda p: p[1], newAngleNames)
+    return list(newAngles)
