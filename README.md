@@ -8,3 +8,5 @@ It also asks you if you want to build the plot for exact amico acid of protein o
 PDB: http://www.rcsb.org/ 
 
 Ramachandran plot: https://proteinstructures.com/Structure/Structure/Ramachandran-plot.html
+
+![General Ramachandran plot](https://en.wikipedia.org/wiki/Ramachandran_plot#/media/File:Ramachandran_plot_general_100K.jpg)
