@@ -9,4 +9,4 @@ PDB: http://www.rcsb.org/
 
 Ramachandran plot: https://proteinstructures.com/Structure/Structure/Ramachandran-plot.html
 
-![General Ramachandran plot](https://en.wikipedia.org/wiki/Ramachandran_plot#/media/File:Ramachandran_plot_general_100K.jpg)
+![General Ramachandran plot](https://upload.wikimedia.org/wikipedia/commons/9/90/Ramachandran_plot_general_100K.jpg)
